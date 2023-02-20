@@ -1,6 +1,7 @@
-package org.springframework.beans.support;
+package org.springframework.beans.factory.support;
 
-import org.springframework.beans.config.SingletonBeanRegistry;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
  * ● @date: Created in 16:03  2023/2/20
  * ● @notes: 默认单例bean注册类
  */
-public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
+public abstract class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
     private Map<String, Object> singletonObjects = new HashMap();
 
@@ -18,7 +19,11 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
          return singletonObjects.get(beanName);
     }
 
-    @Override public void registerSingleton(String beanName, Object singletonObject) {
+    @Override public void addSingleton(String beanName, Object singletonObject) {
         singletonObjects.put(beanName, singletonObject);
     }
+
+    protected abstract BeanDefinition getBeanDefinition(String beanName);
+
+    protected abstract Object createBean(String name, BeanDefinition beanDefinition);
 }

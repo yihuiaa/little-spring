@@ -1,4 +1,4 @@
-package org.springframework.beans.config;
+package org.springframework.beans.factory.config;
 
 /**
  * ● @author: YiHui
@@ -7,6 +7,6 @@ package org.springframework.beans.config;
  */
 public interface SingletonBeanRegistry {
     Object getSingleton(String beanName);
-    void registerSingleton(String beanName, Object singletonObject);
+    void addSingleton(String beanName, Object singletonObject);
 
 }
