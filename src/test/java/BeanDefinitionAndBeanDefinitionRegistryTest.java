@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.springframework.BeanFactory;
 
 /**
  * ● @author: YiHui
@@ -8,10 +7,10 @@ import org.springframework.BeanFactory;
 public class SimpleBeanContainerTest {
     @Test
     public void test() {
-        BeanFactory beanFactory = new BeanFactory();
-        beanFactory.registerBean("userService", new UserService());
-        UserService userService = (UserService)beanFactory.getBean("userService") ;
-        userService.sayHello();
+//        BeanFactory beanFactory = new BeanFactory();
+//        beanFactory.registerBean("userService", new UserService());
+//        UserService userService = (UserService)beanFactory.getBean("userService") ;
+//        userService.sayHello();
     }
     class UserService{
         public void sayHello(){
