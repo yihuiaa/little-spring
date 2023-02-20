@@ -4,7 +4,7 @@
  */
 public class UserService {
     public String save() {
-        System.out.println("save");
-        return "save";
+        System.out.println("save_success");
+        return "save_success";
     }
 }
