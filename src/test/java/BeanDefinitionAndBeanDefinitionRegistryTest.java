@@ -13,7 +13,7 @@ public class BeanDefinitionAndBeanDefinitionRegistryTest {
         BeanDefinition beanDefinition = new BeanDefinition();
         beanDefinition.setClazz(UserService.class);
         beanFactory.registerBeanDefinition("userService", beanDefinition);
-        UserService userService = (UserService)beanFactory.getBean("userService") ;
+        UserService userService = (UserService)beanFactory.getBean("userService","YiHui") ;
         userService.save();
     }
 }

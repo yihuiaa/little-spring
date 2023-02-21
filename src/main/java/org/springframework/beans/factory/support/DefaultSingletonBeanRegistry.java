@@ -24,6 +24,4 @@ public abstract class DefaultSingletonBeanRegistry implements SingletonBeanRegis
     }
 
     protected abstract BeanDefinition getBeanDefinition(String beanName);
-
-    protected abstract Object createBean(String name, BeanDefinition beanDefinition);
 }
