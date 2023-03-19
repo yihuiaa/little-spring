@@ -1,6 +1,8 @@
 package org.springframework.beans.factory.support;
 
+import cn.hutool.core.bean.BeanUtil;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.config.BeanDefinition;
 
 import java.lang.reflect.Constructor;
@@ -18,15 +20,18 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object bean = null;
         try {
             bean = createBeanInstance(name,beanDefinition,args);
+            //填充属性
+            applyPropertyValues(name,bean, beanDefinition);
         }catch(Exception e){
             throw new BeansException("Fail to instantiation",e);
         }
         addSingleton(name,bean);
         return bean;
     }
+
+
     protected Object createBeanInstance(String name,BeanDefinition beanDefinition,Object[] args) throws Exception {
         Class clazz = beanDefinition.getClazz();
-        Object bean = null;
         Constructor constructor = null;
         Constructor[] constructors = clazz.getConstructors();
         for(Constructor c : constructors){
@@ -37,4 +42,13 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         }
         return instantiationStrategy.instantiate(beanDefinition,constructor,args);
     }
+
+    private void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition) {
+        for(PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues()){
+            String name = propertyValue.getName();
+            Object value = propertyValue.getValue();
+            BeanUtil.setProperty(bean,name,value);
+        }
+    }
+
 }
