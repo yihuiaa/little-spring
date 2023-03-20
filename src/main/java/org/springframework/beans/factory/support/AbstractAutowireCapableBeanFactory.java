@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.BeanReference;
 
 import java.lang.reflect.Constructor;
 
@@ -47,6 +48,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         for(PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues()){
             String name = propertyValue.getName();
             Object value = propertyValue.getValue();
+            if(value instanceof BeanReference){
+                BeanReference beanReference = (BeanReference)value;
+                value = getBean(beanReference.getName());
+            }
             BeanUtil.setProperty(bean,name,value);
         }
     }
