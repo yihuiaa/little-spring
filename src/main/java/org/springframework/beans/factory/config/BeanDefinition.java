@@ -14,12 +14,12 @@ public class BeanDefinition {
     }
 
     public BeanDefinition(Class clazz) {
-        this.clazz = clazz;
+        this(clazz, null);
     }
 
     public BeanDefinition(Class clazz, PropertyValues propertyValues) {
         this.clazz = clazz;
-        this.propertyValues = propertyValues;
+        this.propertyValues = propertyValues != null ? propertyValues : new PropertyValues();
     }
 
     public Class getClazz() {
