@@ -9,6 +9,14 @@ public class Person {
     private String age;
     private Car car;
 
+    public Person(String name, String age, Car car) {
+        this.name = name;
+        this.age = age;
+        this.car = car;
+    }
+
+    public Person() {
+    }
 
     public String getName() {
         return name;
