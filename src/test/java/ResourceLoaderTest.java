@@ -1,8 +1,7 @@
-import cn.hutool.core.io.FastByteArrayOutputStream;
 import cn.hutool.core.io.IoUtil;
 import org.junit.Test;
-import org.springframework.beans.core.io.DefaultResourceLoader;
-import org.springframework.beans.core.io.Resource;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.io.InputStream;

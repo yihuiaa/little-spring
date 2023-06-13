@@ -1,4 +1,4 @@
-package org.springframework.beans.core.io;
+package org.springframework.core.io;
 
 /**
  * ● @author: YiHui

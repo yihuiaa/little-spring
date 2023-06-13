@@ -4,12 +4,13 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 /**
  * ● @author: YiHui
  * ● @date: Created in 21:41  2023/4/17
  */
-public interface ConfigurableListableBeanFactory extends HierarchicalBeanFactory,ListableBeanFactory,
+public interface ConfigurableListableBeanFactory extends ConfigurableBeanFactory,ListableBeanFactory,
     AutowireCapableBeanFactory {
 
     /**

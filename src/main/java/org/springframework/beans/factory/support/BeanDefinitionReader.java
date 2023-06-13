@@ -1,7 +1,7 @@
 package org.springframework.beans.factory.support;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.core.io.Resource;
-import org.springframework.beans.core.io.ResourceLoader;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
 /**
  * ● @author: YiHui

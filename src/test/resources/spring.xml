@@ -16,4 +16,7 @@
         <property name="name" value="Rolls-Royce"/>
     </bean>
 
+    <bean class="common.CustomBeanFactoryPostProcessor"/>
+    <bean class="common.CustomerBeanPostProcessor"/>
+
 </beans>

@@ -1,4 +1,4 @@
-package org.springframework.beans.core.io;
+package org.springframework.core.io;
 
 import java.io.*;
 import java.nio.file.Files;
