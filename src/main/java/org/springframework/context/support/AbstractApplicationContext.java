@@ -27,6 +27,14 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         //提前实例化单例Bean
         beanFactory.preInstantiateSingletons();
     }
+    public void close() {
+        doClose();
+    }
+
+    @Override public void registerShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> doClose()));
+    }
+
 
     /**
      * 注册BeanPostProcessor
@@ -71,5 +79,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     @Override public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return getBeanFactory().getBean(name, requiredType);
+    }
+    protected void doClose(){
+        destroyBeans();
+    }
+    protected void destroyBeans(){
+        this.getBeanFactory().destroySingletons();
     }
 }
