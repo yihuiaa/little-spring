@@ -7,26 +7,29 @@ import org.springframework.beans.PropertyValues;
  * ● @date: Created in 15:54  2023/2/20
  */
 public class BeanDefinition {
-    private Class clazz;
+    private Class<?> clazz;
     private PropertyValues propertyValues;
+    private String initMethodName;
+
+    private String destroyMethodName;
 
     public BeanDefinition() {
     }
 
-    public BeanDefinition(Class clazz) {
+    public BeanDefinition(Class<?> clazz) {
         this(clazz, null);
     }
 
-    public BeanDefinition(Class clazz, PropertyValues propertyValues) {
+    public BeanDefinition(Class<?> clazz, PropertyValues propertyValues) {
         this.clazz = clazz;
         this.propertyValues = propertyValues != null ? propertyValues : new PropertyValues();
     }
 
-    public Class getClazz() {
+    public Class<?> getClazz() {
         return clazz;
     }
 
-    public void setClazz(Class clazz) {
+    public void setClazz(Class<?> clazz) {
         this.clazz = clazz;
     }
 
@@ -36,5 +39,21 @@ public class BeanDefinition {
 
     public void setPropertyValues(PropertyValues propertyValues) {
         this.propertyValues = propertyValues;
+    }
+
+    public String getInitMethodName() {
+        return initMethodName;
+    }
+
+    public void setInitMethodName(String initMethodName) {
+        this.initMethodName = initMethodName;
+    }
+
+    public String getDestroyMethodName() {
+        return destroyMethodName;
+    }
+
+    public void setDestroyMethodName(String destroyMethodName) {
+        this.destroyMethodName = destroyMethodName;
     }
 }
