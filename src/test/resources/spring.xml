@@ -7,7 +7,8 @@
 		 http://www.springframework.org/schema/context
 		 http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <bean id="person" class="bean.Person">
+    <bean id="person" class="bean.DisposablePerson" init-method="customInitMethod" destroy-method="customDestroyMethod">
+<!--    <bean id="person" class="bean.DisposablePerson" init-method="customInitMethod" >-->
         <property name="name" value="yiHui"/>
         <property name="car" ref="car"/>
     </bean>
@@ -15,8 +16,5 @@
     <bean id="car" class="bean.Car">
         <property name="name" value="Rolls-Royce"/>
     </bean>
-
-    <bean class="common.CustomBeanFactoryPostProcessor"/>
-    <bean class="common.CustomerBeanPostProcessor"/>
 
 </beans>
