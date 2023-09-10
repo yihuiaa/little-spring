@@ -11,6 +11,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.BeanReference;
+import org.springframework.context.event.SimpleApplicationEventMulticaster;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -21,7 +22,7 @@ import java.lang.reflect.Method;
  */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements
     AutowireCapableBeanFactory {
-    private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
+    private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
     public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy) {
         this.instantiationStrategy = instantiationStrategy;
     }
@@ -70,9 +71,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 break;
             }
         }
-        return instantiationStrategy.instantiate(beanDefinition,constructor,args);
+        return getInstantiationStrategy().instantiate(beanDefinition,constructor,args);
     }
-
+    public InstantiationStrategy getInstantiationStrategy() {
+        return instantiationStrategy;
+    }
     private void applyPropertyValues(Object bean, BeanDefinition beanDefinition) {
         for(PropertyValue propertyValue : beanDefinition.getPropertyValues().getPropertyValues()){
             String name = propertyValue.getName();
