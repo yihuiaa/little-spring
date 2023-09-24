@@ -1,3 +1,5 @@
+package ioc;
+
 import bean.Car;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

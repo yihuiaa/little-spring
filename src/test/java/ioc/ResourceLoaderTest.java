@@ -1,3 +1,5 @@
+package ioc;
+
 import cn.hutool.core.io.IoUtil;
 import org.junit.Test;
 import org.springframework.core.io.DefaultResourceLoader;

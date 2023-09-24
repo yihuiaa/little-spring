@@ -1,12 +1,11 @@
+package ioc;
+
 import bean.Person;
 import org.junit.Test;
 import org.springframework.beans.PropertyValue;
 import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * ● @author: YiHui

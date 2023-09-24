@@ -1,3 +1,5 @@
+package ioc;
+
 import bean.Person;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
